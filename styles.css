@@ -1,0 +1,328 @@
+.okno {
+    position: relative;
+    background-image: url(assets/images/фон.png);
+    background-color: #2e6780;
+    width: 1110px;
+    height: 672px;
+    font-size: 20px;
+    color: #050507;
+    line-height: 0.1em;
+    font-family: 'Open Sans', sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+}
+
+.game-info-container {
+    position: absolute;
+    top: 3.7%;
+    right: 18%;
+    color: white;
+    font-size: 2em;
+}
+
+.game-container {
+    margin: 50px auto;
+    display: grid;
+    grid-template-columns: repeat(4, auto);
+    grid-gap: 10px;
+    justify-content: center;
+    perspective: 500px;
+    position: absolute;
+    top: 0.9%;
+    right: 2.8%;
+}
+
+.card {
+    position: relative;
+    cursor: pointer;
+    height: 175px;
+    width: 125px;
+}
+
+.card-face {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    font-family: 'Playfair Display', serif;
+    font-size: 4em;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    border-radius: 12px;
+    border-width: 1px;
+    border-style: solid;
+    overflow: hidden;
+    transition: transform 500ms ease-in-out;
+    backface-visibility: hidden;
+}
+
+.card.visible .card-back {
+    transform: rotateY(-180deg);
+}
+
+.card.visible .card-front {
+    transform: rotateY(0);
+}
+
+.card-back {
+    background-color: white;
+    border-color: white;
+    transform: rotateY(0);
+}
+
+.card-value {
+    opacity: 0;
+}
+
+.vopros {
+    align-self: flex-start;
+    transition: transform 100ms ease-in-out;
+    transform: translateY(-10px);
+}
+
+.card-back:hover .vopros {
+    transform: translateY(0);
+}
+
+.card-front {
+    border-color: white;
+    transform: rotateY(180deg);
+}
+
+.overlay-text {
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 100;
+    display: none;
+    position: fixed;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    color: black;
+    transition: background-color 500ms, font-size 500ms;
+}
+
+.overlay-text-small {
+    font-size: .3em;
+}
+
+.overlay-text.visible {
+    display: flex;
+    animation: overlay-grow 500ms forwards;
+}
+
+.card2 {
+    background-color: #2618B1;
+}
+
+.card4 {
+    background-color: #372F85;
+}
+
+.card6 {
+    background-color: #120873;
+}
+
+.card8 {
+    background-color: #0A64A4;
+}
+
+.card10 {
+    background-color: #3E94D1;
+}
+
+.card12 {
+    background-color: #03406A;
+}
+
+@keyframes overlay-grow {
+    from {
+        background-color: rgba(0, 0, 0, 0);
+        font-size: 0;
+    }
+    to {
+        background-color: rgba(0, 0, 0, .8);
+        font-size: 10em;
+    }
+}
+
+@keyframes blink {
+    0%,
+    22%,
+    36%,
+    75% {
+        color: white;
+        text-shadow: 0 0 0.6rem white, 0 0 1.5rem #37DA7E, -0.2rem 0.1rem 1rem #37DA7E, 0.2rem 0.1rem 1rem #37DA7E, 0 -0.5rem 2rem #00B64F, 0 0.5rem 3rem #00B64F;
+    }
+    28%,
+    33% {
+        color: #37DA7E;
+        text-shadow: none;
+    }
+    82%,
+    97% {
+        color: #00B64F;
+        text-shadow: none;
+    }
+}
+
+.start {
+    position: absolute;
+    font-size: 36.82px;
+    font-family: Clarendon Blk BT;
+    top: 17.7%;
+    left: 10.2%;
+    transform: rotate(-22deg);
+    text-transform: uppercase;
+    color: white;
+    cursor: pointer;
+    text-shadow: 0 0 0.6rem white, 0 0 1.5rem #37DA7E, -0.2rem 0.1rem 1rem #37DA7E, 0.2rem 0.1rem 1rem #37DA7E, 0 -0.5rem 2rem #00B64F, 0 0.5rem 3rem #00B64F;
+    animation: shine 2s forwards, flicker 3s infinite;
+}
+
+.lico {
+    position: absolute;
+    left: 1%;
+    bottom: 0;
+}
+
+.oblako {
+    position: absolute;
+    left: 22%;
+    bottom: 19.1%;
+}
+
+.voblake {
+    position: absolute;
+    left: 24.4%;
+    bottom: 28.3%;
+}
+
+.krug {
+    position: absolute;
+    left: 4.3%;
+    top: 6.1%;
+}
+
+.flicker {
+    animation: shine 2s forwards, blink 3s 2s infinite;
+}
+
+.fast-flicker {
+    animation: shine 2s forwards, blink 10s 1s infinite;
+}
+
+@keyframes shine {
+    0% {
+        color: #007633;
+        text-shadow: none;
+    }
+    100% {
+        color: white;
+        text-shadow: 0 0 0.6rem white, 0 0 1.5rem #37DA7E, -0.2rem 0.1rem 1rem #37DA7E, 0.2rem 0.1rem 1rem #37DA7E, 0 -0.5rem 2rem #00B64F, 0 0.5rem 3rem #00B64F;
+    }
+}
+
+@keyframes flicker {
+    from {
+        opacity: 1;
+    }
+    4% {
+        opacity: 0.9;
+    }
+    6% {
+        opacity: 0.85;
+    }
+    8% {
+        opacity: 0.95;
+    }
+    10% {
+        opacity: 0.9;
+    }
+    11% {
+        opacity: 0.922;
+    }
+    12% {
+        opacity: 0.9;
+    }
+    14% {
+        opacity: 0.95;
+    }
+    16% {
+        opacity: 0.98;
+    }
+    17% {
+        opacity: 0.9;
+    }
+    19% {
+        opacity: 0.93;
+    }
+    20% {
+        opacity: 0.99;
+    }
+    24% {
+        opacity: 1;
+    }
+    26% {
+        opacity: 0.94;
+    }
+    28% {
+        opacity: 0.98;
+    }
+    37% {
+        opacity: 0.93;
+    }
+    38% {
+        opacity: 0.5;
+    }
+    39% {
+        opacity: 0.96;
+    }
+    42% {
+        opacity: 1;
+    }
+    44% {
+        opacity: 0.97;
+    }
+    46% {
+        opacity: 0.94;
+    }
+    56% {
+        opacity: 0.9;
+    }
+    58% {
+        opacity: 0.9;
+    }
+    60% {
+        opacity: 0.99;
+    }
+    68% {
+        opacity: 1;
+    }
+    70% {
+        opacity: 0.9;
+    }
+    72% {
+        opacity: 0.95;
+    }
+    93% {
+        opacity: 0.93;
+    }
+    95% {
+        opacity: 0.95;
+    }
+    97% {
+        opacity: 0.93;
+    }
+    to {
+        opacity: 1;
+    }
+}
